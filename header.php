@@ -1,0 +1,1 @@
+Podeliti html u php template: razdvojiti header, footer i sidebar u posebne partial fajlove (header.php, , ). Content postaviti u posebne stranice (posts.php, , create-post.php, ) koje će uključivati header, footer i sidebar. 
