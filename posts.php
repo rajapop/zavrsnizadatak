@@ -15,9 +15,9 @@ $statement->setFetchMode(PDO::FETCH_ASSOC);
 $posts = $statement->fetchAll();
 
 // koristite var_dump kada god treba da proverite sadrzaj neke promenjive
-    // echo '<pre>';
-    // var_dump($posts);
-    // echo '</pre>';
+    echo '<pre>';
+    var_dump($posts);
+    echo '</pre>';
 
 ?>
 <div class="col-sm-8 blog-main">
