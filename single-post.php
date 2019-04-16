@@ -63,10 +63,24 @@
 
 
 <?php } ?>
-<nav class="blog-pagination">
+
+            <nav class="blog-pagination">
                 <a class="btn btn-outline-primary" href="#">Older</a>
                 <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
             </nav>
+
+            <div class="comments">
+                            <h3>comments:</h3>
+                            <?php foreach ($singleComments as $com){?>
+                                <div class="single-comment">
+                                    <div>posted by: <strong><?php echo($com['name']); ?></strong> <?php echo($com['created_at']); ?></div>
+                                    <div><?php echo($com['body']); ?>
+                                    </div>
+                                </div>
+
+                            <?php } ?>
+
+            </div>
 
     </div>
 
