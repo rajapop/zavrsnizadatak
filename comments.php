@@ -16,6 +16,19 @@
         }
     }
 </script>
+<form action="create-comment.php">
+  <div class="form-group">
+    <label >Your name:</label>
+    <input type="text" class="form-control" id="author">
+  </div>
+  <div class="form-group">
+    <label>Comment:</label>
+    <textarea class="form-control" rows="3" id="comment"></textarea>
+  </div>
+  <input type="text" hidden value="<?php echo $_GET['post_id'] ?>" id="postId">
+  <button type="submit" class="btn btn-default">Submit</button>
+</form>
+<br>
  <button type="button" class="btn btn-default" onclick="toggle_visibility();" id="show">Hide comments</button>
  <div class="comments" style="display: block" id="foo">   
     <h3>comments:</h3>

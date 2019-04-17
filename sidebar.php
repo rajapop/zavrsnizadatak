@@ -23,7 +23,7 @@ $posts1 = $statement->fetchAll();
 <!-- <div class="col-sm-8 blog-main"> -->
 <aside class="col-sm-3 ml-sm-auto blog-sidebar">
     <div class="sidebar-module sidebar-module-inset">
-        <h4>Latest posts</h4>
+        <h4>Latest posts:</h4>
         <p>
             <?php
                 foreach ($posts1 as $post) {
