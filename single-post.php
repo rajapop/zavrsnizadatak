@@ -1,6 +1,3 @@
-<?php
-    include('db.php');
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -19,46 +16,43 @@
     <!-- Custom styles for this template -->
     <link href="styles/blog.css" rel="stylesheet">
     <link href="styles/styles.css" rel="stylesheet">
-
-
 </head>
 
 <body>
+
 <?php include 'header.php';?>
 
 <main role="main" class="container">
-
     <div class="row">
-    <?php
-                if (isset($_GET['post_id'])) {
+        <?php //Prvi upit
+            if (isset($_GET['post_id'])) {
 
-                    // pripremamo upit
-                    $sql1 = "SELECT * FROM posts  WHERE posts.id = {$_GET['post_id']}";
-                    $statement1 = $connection->prepare($sql1);
+                // pripremamo upit
+                $sql1 = "SELECT * FROM posts  WHERE posts.id = {$_GET['post_id']}";
+                $statement1 = $connection->prepare($sql1);
 
-                    // izvrsavamo upit
-                    $statement1->execute();
+                // izvrsavamo upit
+                $statement1->execute();
 
-                    // zelimo da se rezultat vrati kao asocijativni niz.
-                    // ukoliko izostavimo ovu liniju, vratice nam se obican, numerisan niz
-                    $statement1->setFetchMode(PDO::FETCH_ASSOC);
+                // zelimo da se rezultat vrati kao asocijativni niz.
+                // ukoliko izostavimo ovu liniju, vratice nam se obican, numerisan niz
+                $statement1->setFetchMode(PDO::FETCH_ASSOC);
 
-                    // punimo promenjivu sa rezultatom upita
-                    $singlePost = $statement1->fetch();
+                // punimo promenjivu sa rezultatom upita
+                $singlePost = $statement1->fetch();
 
-                    // koristite var_dump kada god treba da proverite sadrzaj neke promenjive
-                        // echo '<pre>';
-                        // var_dump($singlePost);
-                        // echo '</pre>';
+                // koristite var_dump kada god treba da proverite sadrzaj neke promenjive
+                // echo '<pre>';
+                // var_dump($singlePost);
+                // echo '</pre>';
+        ?>
+        <div class="col-sm-8 blog-main">
 
-            ?>
-            <div class="col-sm-8 blog-main">
-
-            <div class="blog-post">
-                <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
-                <p class="blog-post-meta"><?php echo($singlePost["created_at"]) ?> by <a href="#"><?php echo($singlePost["author"]) ?></a></p>
-                <p><?php echo($singlePost["body"]) ?></p>
-            </div><!-- /.blog-post -->
+        <div class="blog-post">
+            <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
+            <p class="blog-post-meta"><?php echo($singlePost["created_at"]) ?> by <a href="#"><?php echo($singlePost["author"]) ?></a></p>
+            <p><?php echo($singlePost["body"]) ?></p>
+        </div><!-- /.blog-post -->
 
 
 
@@ -68,26 +62,9 @@
                 <a class="btn btn-outline-primary" href="#">Older</a>
                 <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
             </nav>
-
-            <div class="comments">
-                            <h3>comments:</h3>
-                            <?php foreach ($singleComments as $com){?>
-                                <div class="single-comment">
-                                    <div>posted by: <strong><?php echo($com['name']); ?></strong> <?php echo($com['created_at']); ?></div>
-                                    <div><?php echo($com['body']); ?>
-                                    </div>
-                                </div>
-
-                            <?php } ?>
-
-            </div>
-
-    </div>
-
+        <?php include 'comments.php';?>
         <?php include 'sidebar.php';?>
-
     </div><!-- /.row -->
-
 </main><!-- /.container -->
 
 <?php include 'footer.php';?>
