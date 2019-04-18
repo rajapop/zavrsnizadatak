@@ -45,7 +45,7 @@
             if (isset($_GET['post_id'])) {
 
                 // pripremamo upit
-                $sql4 = "SELECT posts.id, comments.author, comments.text FROM comments join posts on comments.post_id=posts.id where post_id = {$_GET['post_id']}";
+                $sql4 = "SELECT posts.id, comments.author, comments.text, comments.id as comid FROM comments join posts on comments.post_id=posts.id where post_id = {$_GET['post_id']}";
                 $comments = $connection->prepare($sql4);
 
                 // izvrsavamo upit
@@ -66,20 +66,24 @@
         ?>
         <?php foreach ($singleComments as $com){?>
             <div class="single-comment">
-                
                 <div>posted by: <strong><?php echo($com['author']); ?></strong></div>
-                <div>
-                    <ul>
-                        <li>                        
-                            <?php echo($com['text']); ?>
+                    <div>
+                        <ul>
+                            <li>
+                                <?php echo($com['text']); ?>                            
+                            </li>
                             
-                        </li>
-                    </ul>
-                    <hr> 
+                            
+                        </ul>
+                        <form action="delete-comment.php" method="POST">
+                            <input type="text" hidden value="<?php echo $_GET['post_id'] ?>" name="postId" >
+                            <input type="text" hidden value="<?php echo $com['comid']; ?>" name="commentId" >
+                            <button type="submit" class="btn btn-primary btn-sm">Delete</button>
+                        </form>
+                        <hr> 
+                    </div>
                 </div>
-            </div>
-        <?php } ?>
-
+            <?php } ?>
         <?php } ?>
     </div>
 </div>
