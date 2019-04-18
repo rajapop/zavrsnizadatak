@@ -1,7 +1,7 @@
 <?php
 
 // pripremamo upit
-$sql = "SELECT * FROM posts ORDER BY created_at DESC LIMIT 10";
+$sql = "SELECT * FROM posts ORDER BY id DESC LIMIT 10";
 $statement = $connection->prepare($sql);
 
 // izvrsavamo upit
@@ -15,9 +15,9 @@ $statement->setFetchMode(PDO::FETCH_ASSOC);
 $posts = $statement->fetchAll();
 
 // koristite var_dump kada god treba da proverite sadrzaj neke promenjive
-    echo '<pre>';
-    var_dump($posts);
-    echo '</pre>';
+    // echo '<pre>';
+    // var_dump($posts);
+    // echo '</pre>';
 
 ?>
 <div class="col-sm-8 blog-main">
