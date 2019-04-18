@@ -16,16 +16,25 @@
         }
     }
 </script>
-<form action="create-comment.php">
+<form action="create-comment.php" method="POST">
+    <?php
+        $error = '';
+        if (!empty($_GET['error'])) {
+            $error = 'All fields are required.';
+        }
+    ?>
+    <?php if (!empty($error)) {?>
+        <span class="alert alert-danger"><?php echo $error; ?></span>
+    <?php } ?>
   <div class="form-group">
     <label >Your name:</label>
-    <input type="text" class="form-control" id="author">
+    <input type="text" class="form-control" name="author">
   </div>
   <div class="form-group">
     <label>Comment:</label>
-    <textarea class="form-control" rows="3" id="comment"></textarea>
+    <textarea class="form-control" rows="3" name="comment"></textarea>
   </div>
-  <input type="text" hidden value="<?php echo $_GET['post_id'] ?>" id="postId">
+  <input type="text" hidden value="<?php echo $_GET['post_id'] ?>" name="postId" >
   <button type="submit" class="btn btn-default">Submit</button>
 </form>
 <br>
