@@ -1,15 +1,9 @@
 <?php
 include 'db.php';
 
-// postTitle: t4gb4tgbt
-// postBody: 5tgb5tgb5t
-// postAuthor: 5tgb5tg
 
-// postDate: 2019-04-18
-
-// da li je empty $_POSt['author ] i comment 
 if (!empty($_POST['postTitle']) && !empty($_POST['postBody']) && !empty($_POST['postAuthor'])){
-// ako nije
+
     $postTitle= $_POST['postTitle'];
     $postBody= $_POST['postBody'];
     $postAuthor= $_POST['postAuthor'];

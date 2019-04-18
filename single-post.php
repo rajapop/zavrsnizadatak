@@ -17,7 +17,6 @@
     <link href="styles/blog.css" rel="stylesheet">
     <link href="styles/styles.css" rel="stylesheet">
 </head>
-
 <body>
 
 <?php include 'header.php';?>
@@ -52,6 +51,11 @@
             <h2 class="blog-post-title"><a href="single-post.php?post_id=<?php echo($singlePost['id']) ?>"><?php echo($singlePost['title']) ?></a></h2>
             <p class="blog-post-meta"><?php echo($singlePost["created_at"]) ?> by <a href="#"><?php echo($singlePost["author"]) ?></a></p>
             <p><?php echo($singlePost["body"]) ?></p>
+            <form action="delete-post.php" method="POST" name="deletePostForm">
+                <input type="text" hidden value="<?php echo $_GET['post_id'] ?>" name="postId" >
+                <button type="submit" class="btn btn-primary btn-sm" id="submitDelete">Delete Post</button>
+            </form>
+            <hr> 
         </div><!-- /.blog-post -->
 
 
@@ -71,3 +75,11 @@
 
 </body>
 </html>
+<script>
+  document.getElementById('submitDelete').addEventListener("click", function(event){
+    event.preventDefault();
+    if (window.confirm("Do you really want to delete this post?")) { 
+      document.deletePostForm.submit();
+    }
+  });
+</script>
