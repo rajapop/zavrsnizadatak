@@ -1,7 +1,6 @@
 <?php
 include 'db.php';
 
-
 if (!empty($_POST['postTitle']) && !empty($_POST['postBody']) && !empty($_POST['postAuthor'])){
 
     $postTitle= $_POST['postTitle'];

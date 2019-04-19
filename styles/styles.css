@@ -2,7 +2,6 @@ html {
     font-size: 14px;
 }
 .blog-masthead {
-
     background-color: #b34848;
 }
 
@@ -24,5 +23,4 @@ h6,
 .blog-post-title a:hover{
     text-decoration: underline;
     color: #b34848;
-
 }

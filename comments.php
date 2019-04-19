@@ -6,8 +6,6 @@
         } else {
             document.getElementById("show").innerHTML = "Hide comments";
         }
-
-
         var e = document.getElementById('foo');
         if(e.style.display == 'block') {
             e.style.display = 'none';

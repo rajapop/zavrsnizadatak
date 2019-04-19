@@ -2,9 +2,8 @@
 include 'db.php';
 
 $postId = $_POST['postId'];
-// da li je empty $_POSt['author ] i comment 
+ 
 if (!empty($_POST['author']) && !empty($_POST['comment'])){
-// ako nije
     $author=$_POST['author'];
     $comment=$_POST['comment'];
 
